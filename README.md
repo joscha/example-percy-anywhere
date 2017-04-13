@@ -1,4 +1,4 @@
-# example-percy-anywhere
+# example-percy-react-storybook
 
 An example of [Percy](https://percy.io) visual regression tests, using [Percy Anywhere](https://percy.io/docs/clients/ruby/percy-anywhere) with [react-storybook](https://github.com/storybooks/react-storybook).
 
