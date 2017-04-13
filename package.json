@@ -5,6 +5,7 @@
   "repository": "git@github.com:joscha/example-percy-react-storybook.git",
   "author": "Joscha Feth <joscha@feth.com>",
   "license": "MIT",
+  "private": true,
   "dependencies": {
     "react": "^15.5.3",
     "react-dom": "^15.5.3"
