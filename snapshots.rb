@@ -3,7 +3,6 @@ require 'json'
 require 'percy/capybara/anywhere'
 require 'phantomjs'
 require 'uri'
-require 'rspec'
 ENV['PERCY_DEBUG'] = '1'  # Enable debugging output.
 
 Capybara.register_driver :poltergeist do |app|
@@ -28,15 +27,11 @@ storybooks = JSON.parse(storybook_descriptor_file)
 
 Percy::Capybara::Anywhere.run(server, assets_dir, assets_base_url) do |page|
   storybooks.each do |storybook|
-    describe storybook['kind'] do
-      selected_kind = URI::encode_www_form_component(storybook['kind'])
-      storybook['stories'].each do |story|
-        it story['name'] do
-          selected_story = URI::encode_www_form_component(story['name'])
-          page.visit("/iframe.html?selectedKind=#{selected_kind}&selectedStory=#{selected_story}")
-          Percy::Capybara.snapshot(page, name: "#{storybook['kind']} - #{story['name']}")
-        end
-      end
+    selected_kind = URI::encode_www_form_component(storybook['kind'])
+    storybook['stories'].each do |story|
+      selected_story = URI::encode_www_form_component(story['name'])
+      page.visit("/iframe.html?selectedKind=#{selected_kind}&selectedStory=#{selected_story}")
+      Percy::Capybara.snapshot(page, name: "#{storybook['kind']} - #{story['name']}")
     end
   end
 end
