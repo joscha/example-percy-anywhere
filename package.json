@@ -20,6 +20,6 @@
     "build-storybook-index": "GENERATE_STORYBOOK_INDEX=true yarn build-storybook",
     "postbuild-storybook-index": "node ./storybook-static/stories.js > storybook-index.json",
     "pretest": "yarn build-storybook-index && yarn build-storybook",
-    "test": "bundle exec rspec snapshots.rb"
+    "test": "bundle exec ruby snapshots.rb"
   }
 }
